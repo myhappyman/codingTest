@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function solution(price, money, count) {
+    let total = 0;
+    let increase_price = price;
+    for(let i=0; i<count; i++){
+        total += increase_price;
+        increase_price += price;
+        // console.log("total > " + total)
+        console.log("price > " + price)
+    }
+    
+    return total - money;
+}
+console.log(solution(3, 20, 4)) //10
+</script>
+</html>

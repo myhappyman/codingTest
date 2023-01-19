@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function solution(n, t, m, p) {
+    let answer = [];
+    let i = 0;
+    let cnt = 0;
+    while(answer.length < t){
+        let tmp = i.toString(n);
+        let len = tmp.length;
+        if(len > 1){
+            for(let j=0; j<len; j++){
+                if(++cnt === p){
+                    answer.push(tmp.substring(j, j+1));
+                    if(answer.length >= t){
+                        break;
+                    }
+                }
+                cnt = cnt%m;
+            }
+        }else{
+            if(++cnt === p){
+                answer.push(tmp);
+            }
+            cnt = cnt%m;
+        }
+        i++;
+    }
+    return answer.join('').toUpperCase();
+}
+
+
+// console.log(solution(10, 5, 4, 3));
+console.log(solution(2, 4, 2, 1));
+// console.log(solution(16, 16, 2, 1));
+// console.log(solution(16, 16, 2, 2));
+
+
+// function solution(n, t, m, p) {
+//     let answer_arr = [];
+//     for(let i=0; i<=1000; i++){
+//         let tmp = i.toString(n);
+//         let len = tmp.length;
+//         if(len > 1){
+//             for(let j=0; j<len; j++){
+//                 answer_arr.push(tmp.substring(j, j+1));
+//             }
+//         }else{
+//             answer_arr.push(tmp);
+//         }
+//     }
+
+//     let answer = [];
+//     let same = m === p ? 0 : p;
+//     for(let i=0; i<answer_arr.length; i++){
+//         let a = answer_arr[i];
+//         if((i+1) % m === same){
+//             answer.push(a);
+//         }
+
+//         if(answer.length === t){
+//             break;
+//         }
+//     }
+
+//     return answer.join('').toUpperCase();
+// }
+</script>
+</html>l

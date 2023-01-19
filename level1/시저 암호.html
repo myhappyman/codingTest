@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function solution(s, n) {
+    const abc = "abcdefghijklmnopqrstuvwxyz";
+    const lower_Arr = [...abc];
+    const upper_Arr = [...abc.toUpperCase()];
+    
+    n = n%26;
+    const s_arr = [...s];
+    const result = [];
+    s_arr.forEach(c => {
+        if(lower_Arr.indexOf(c) > -1){
+            let idx = (lower_Arr.indexOf(c)+n) % 26;
+            result.push(lower_Arr[idx]);
+        }else if(upper_Arr.indexOf(c) > -1){
+            let idx = (upper_Arr.indexOf(c)+n) % 26;
+            result.push(upper_Arr[idx]);
+        }else{
+            result.push(c);
+        }
+    });
+    return result.join("");
+}
+console.log(solution("AB", 1)); //"BC"
+console.log(solution("z", 1)); //"a"
+console.log(solution("a B z", 4)); //"e F d"
+</script>
+</html>

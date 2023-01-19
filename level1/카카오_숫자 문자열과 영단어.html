@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// function solution(s) {
+//     let answer = "";
+//     const number_str = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+//     while(s.length != 0){
+//         if(Number.isInteger(parseInt(s.substring(0,1)))){
+//             answer += s.substring(0,1);
+//             if(s.length == 1){
+//                 break;
+//             }
+//             s = s.substring(1, s.length);
+//         }else{
+//             let cnt = 3;
+//             let num = -1;
+//             while(num == -1){
+//                 let idx = number_str.indexOf(s.substring(0, cnt));
+//                 if(idx > -1){
+//                     num = idx;
+//                     break;
+//                 }
+//                 cnt++;
+//             }
+//             answer += num;
+//             if(s.length == cnt){
+//                 break;
+//             }
+//             s = s.substring(cnt, s.length);
+//         }
+//     }
+//     return parseInt(answer);
+// }
+
+function solution(s) {
+    let numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    var answer = s;
+
+    for(let i=0; i< numbers.length; i++) {
+        let arr = answer.split(numbers[i]);
+        answer = arr.join(i);
+    }
+
+    return Number(answer);
+}
+// console.log(solution("one4seveneight")); // 1478
+console.log(solution("one4onesevenoneeight")); // 1478
+// console.log(solution("23four5six7")); // 234567
+// console.log(solution("2three45sixseven")); // 234567
+    
+</script>
+</html>

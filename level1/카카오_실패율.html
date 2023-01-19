@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function solution(N, stages) {
+    const stage_arr = [...new Set(stages)];
+    const user_cnt = stages.length;
+    const fail_map = new Map();
+
+    for(let i=1; i<=N; i++){
+        const clear_user_cnt = user_cnt - stages.filter(a => i>a).length;
+        const now_stage_cnt = stages.filter(a => a == i).length;
+
+        const fail_per = now_stage_cnt / clear_user_cnt;
+        fail_map.set(i, fail_per == 0 ? -1 : fail_per);
+    }
+    
+    const mapToArray = [...fail_map];
+    mapToArray.sort((a, b) => b[1] - a[1]);
+
+    const answer = [];
+    mapToArray.forEach(arr => {
+        if(N >= arr[0]){
+            answer.push(arr[0]);
+        }        
+    });
+    return answer;
+}
+
+// console.log(solution(5, [2, 1, 2, 6, 2, 4, 3, 3])); //[3,4,2,1,5]
+// console.log(solution(4, [4,4,4,4,4])); //[4,1,2,3]
+console.log(solution(5, [3,3,3])); //[3,1,2]
+</script>
+</html>

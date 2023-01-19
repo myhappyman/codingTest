@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// function solution(id_list, report, k) {
+//     const answer = [];
+//     const report_ban_list = [];
+//     const reporting_obj = {};
+//     id_list.map(id => {
+//         report_ban_list[id] = [];
+//         reporting_obj[id] = [];
+//     });
+
+//     report.forEach(r => {
+//         const report_arr = r.split(" ");
+//         let report_user = report_arr[0];
+//         let ban_user = report_arr[1];
+
+//         if(report_ban_list[report_user].indexOf(ban_user) == -1){
+//             report_ban_list[report_user].push(ban_user);
+//         }
+
+//         if(reporting_obj[ban_user].indexOf(report_user) == -1){
+//             reporting_obj[ban_user].push(report_user);
+//         }
+//     });
+
+//     id_list.forEach(id => {
+//         let cnt = 0;
+//         report_ban_list[id].forEach(r => {
+//             if(reporting_obj[r].length >= k){
+//                 cnt++;
+//             }
+//         });
+//         answer.push(cnt);
+//     });
+
+//     return answer;
+// }
+
+// function solution(id_list, report, k) {
+//     const reports = report.map(r => r.split(" "));
+//     console.log(reports);
+//     const bad_map = new Map();
+//     reports.forEach(rp => {
+//         const reporter = rp[0];
+//         const bad = rp[1];
+//         bad_map.set(bad, bad_map.get(bad)+1 || 1)
+//     });
+//     console.log(bad_map);
+// }
+
+function solution(id_list, report, k) {
+    let reports = [...new Set(report)].map(a=>{return a.split(' ')});
+    let counts = new Map();
+    for (const bad of reports){
+        counts.set(bad[1],counts.get(bad[1])+1||1)
+    }
+    let good = new Map();
+    for(const report of reports){
+        if(counts.get(report[1])>=k){
+            good.set(report[0],good.get(report[0])+1||1)
+        }
+    }
+    let answer = id_list.map(a=>good.get(a)||0)
+    return answer;
+}
+
+// console.log(
+//     solution(
+//             ["muzi", "frodo", "apeach", "neo"],
+//             ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"],
+//             2)
+// );
+
+console.log(
+    solution(
+            ["con", "ryan"],
+            ["ryan con", "ryan con", "ryan con", "ryan con"],
+            3)
+);
+
+// console.log(
+//     solution(
+//             ["muzi", "frodo", "apeach", "neo"],
+//             ["muzi frodo", "apeach frodo", "apeach neo", "muzi neo"],
+//             1)
+// );
+
+</script>
+</html>

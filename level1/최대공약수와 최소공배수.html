@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function solution(n, m) {
+    const answer = [];
+    let big = n > m ? n : m;
+    let small = n > m ? m : n;
+    let big_common_div = 0;
+    let small_common_mul = 0;
+    for(let i=1; i<=small; i++){
+        if(n%i==0 && m%i==0){
+            big_common_div = i;
+        }
+    }
+
+    for(let i=big; i<=1000000; i++){
+        if(i%n==0 && i%m==0){
+            small_common_mul = i;
+            break; 
+        }
+    }
+    answer.push(big_common_div);
+    answer.push(small_common_mul);
+    
+    return answer;
+}
+</script>
+</html>

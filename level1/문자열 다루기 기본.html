@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function solution(s) {
+    if(s.length === 4 || s.length === 6){
+        return s.indexOf("e") === -1 && !Number.isNaN(s*1)
+    }else{
+        return false;
+    }
+}
+console.log(solution("3e10"))
+</script>
+</html>

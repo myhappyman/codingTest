@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function solution(s) {
+    let cnt = 0;
+    return [...s].map(c => {
+        if(c.trim()){
+            cnt++
+            if(cnt % 2 == 0){
+                return c.toLowerCase();
+            }else{
+                return c.toUpperCase();
+            }
+        }else{
+            cnt = 0;
+            return c;
+        }
+    }).join("");
+}
+// function solution(s) {
+//      return [...s].map((c, idx) => !c.trim() ? c : idx%2 == 0 ? c.toUpperCase : c.toLowerCase()).join("");
+//     return [...s].map((c, idx) => c.trim() ? idx%2 == 0 ? c.toUpperCase() : c.toLowerCase() : c).join("");
+// }
+console.log(solution("try hello world"));
+</script>
+</html>
