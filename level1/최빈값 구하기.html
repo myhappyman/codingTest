@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function solution(array) {
+      let map = new Map();
+      let set = new Set(array);
+      for (value of set) {
+        const cnt = array.filter((n) => n === value).length;
+        map.set(value, cnt);
+      }
+      console.log(map);
+
+      let max = [...map]
+        .map((o) => o[1])
+        .reduce((max, cur) => (max < cur ? cur : max));
+      console.log(max);
+
+      const cnt = [...map].filter((v) => v[1] === max).length;
+
+      return cnt > 1 ? -1 : [...map].find((v) => v[1] === max)[0];
+    }
+    solution([1, 2, 2, 3, 3, 4]);
+  </script>
+</html>
