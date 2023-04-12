@@ -20,19 +20,11 @@ function solution(park, routes) {
       if (finish >= Park_2D.length) continue;
 
       let flag = false;
-      if (direction === "N") {
-        for (let j = y; j >= finish; j--) {
-          if (Park_2D[j][x] === "X") {
-            flag = true;
-            break;
-          }
-        }
-      } else {
-        for (let j = y; j <= finish; j++) {
-          if (Park_2D[j][x] === "X") {
-            flag = true;
-            break;
-          }
+      let [j, check] = direction === "N" ? [finish, y] : [y, finish];
+      for (j; j <= check; j++) {
+        if (Park_2D[j][x] === "X") {
+          flag = true;
+          break;
         }
       }
       if (flag) continue;
@@ -45,19 +37,11 @@ function solution(park, routes) {
       if (finish >= Park_2D[y].length) continue;
 
       let flag = false;
-      if (direction === "W") {
-        for (let j = x; j >= finish; j--) {
-          if (Park_2D[y][j] === "X") {
-            flag = true;
-            break;
-          }
-        }
-      } else {
-        for (let j = x; j <= finish; j++) {
-          if (Park_2D[y][j] === "X") {
-            flag = true;
-            break;
-          }
+      let [j, check] = direction === "W" ? [finish, x] : [x, finish];
+      for (j; j <= check; j++) {
+        if (Park_2D[y][j] === "X") {
+          flag = true;
+          break;
         }
       }
       if (flag) continue;
