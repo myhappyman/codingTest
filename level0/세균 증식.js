@@ -4,4 +4,4 @@ function solution(n, t) {
     }
     return n;
 }
-console.log(solution(7, 15));
+console.log();
