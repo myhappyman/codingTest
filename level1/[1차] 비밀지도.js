@@ -1,17 +1,12 @@
 function solution(n, arr1, arr2) {
   const array = [];
   for (let i = 0; i < n; i++) {
-    let value = arr1[i].toString(2);
-    value = fillString(n, value);
-
-    let value2 = arr2[i].toString(2);
-    value2 = fillString(n, value2);
+    let value = fillString(n, arr1[i].toString(2));
+    let value2 = fillString(n, arr2[i].toString(2));
 
     let newValue = "";
     for (let j = 0; j < n; j++) {
-      let v1 = parseInt(value[j]);
-      let v2 = parseInt(value2[j]);
-      if (v1 + v2 > 0) {
+      if (parseInt(value[j]) + parseInt(value2[j]) > 0) {
         newValue += "#";
       } else {
         newValue += " ";
@@ -19,7 +14,6 @@ function solution(n, arr1, arr2) {
     }
     array.push(newValue);
   }
-
   return array;
 }
 
