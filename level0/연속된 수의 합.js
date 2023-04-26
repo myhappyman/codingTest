@@ -1,22 +1,17 @@
 function solution(num, total) {
-    let answer = [num];
-    let sum = num;
+    let even = num % 2 === 0
+    let halfValue = num === 1 ? total : Math.floor(total/num);
+    const result = even ? [halfValue, halfValue+1] : [halfValue];
     let cnt = 1;
-    while(sum <= total){
-        sum += num + cnt;
-        num.push(num + cnt++);
+    while(result.length !== num){
+        result.unshift(halfValue - cnt);
+        let add = halfValue + cnt++
+        result.push(even ? add+1 : add);
     }
-    
-    if(sum === total){
-        return answer;
-    }else{
-        answer = [num];
-        sum = num;
-        cnt = -1;
-        while(sum === total){
-            sum += num + cnt;
-            num.push(num + cnt--);
-        }
-    }
-    return answer;
+    return result;
 }
+console.log(solution(3, 12));
+console.log(solution(4, 14));
+console.log(solution(5, 15));
+console.log(solution(5, 5));
+// console.log(solution(5, 15));
