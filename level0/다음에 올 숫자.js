@@ -4,8 +4,7 @@ function solution(common) {
     if(cha === cha2){
         return common[common.length-1]+cha;
     }else{
-        const mul = cha > 1 ? (cha2-cha) : cha2;
-        return common[common.length-1] * mul 
+        return common[common.length-1] * common[2]/common[1];
     }
 }
 console.log(solution([2,4,8]));
