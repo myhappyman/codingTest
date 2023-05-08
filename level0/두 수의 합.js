@@ -1,36 +1,29 @@
 function solution(a, b) {
-    if(a.length < 13 && b.length < 13){
-        return +a + (+b) + "";
-    }
-
-    while(a.length !== b.length){
-        a.length > b.length ? b="0"+b : a="0"+a;
-    }
-    const arrA = [];
-    const arrB = [];
-    let idx = 0;
-    const slicing = 10;
-    while(idx*slicing < a.length){
-        arrA[idx] = a.slice(idx*slicing, idx*slicing+slicing);
-        arrB[idx] = b.slice(idx*slicing, idx*slicing+slicing);
-        idx++;
-    }
-    arrA.reverse();
-    arrB.reverse();
-
-    const result = arrA.map((x, i) => {        
-        let value = String((+x) + (+arrB[i]));
-        let valueLen = value.length;
-        if(valueLen > String(arrB[i]).length &&
-            i+1 !== arrA.length){
-            arrA[i+1] = String(+arrA[i+1] + (+value.slice(0,1)));
-            value = value.slice(1);
+    if(a.length<13 && b.length<13) return +a+(+b)+"";
+    else{
+        if(a.length != b.length){
+            while(a.length != b.length){
+                a.length > b.length ? b="0"+b : a="0"+a;
+            }
         }
-        return value;
-    });
-    return result.reverse().join("");
+        const arrA = [...a].reverse();
+        const arrB = [...b].reverse();
+        const arr = [];
+        for(let i=0; i<arrA.length; i++){
+            const sum = +arrA[i]+(+arrB[i])+"";
+            if(i+1 != arrA.length && (sum.length != arrA[i].length
+                || sum.length != arrB[i].length)){
+                arrA[i+1] = +arrA[i+1]+1+"";
+                arr.push(sum.slice(1));
+            }else{
+                arr.push(sum);
+            }
+        }
+        return arr.reverse().reduce((a,b) => a+b, "");
+    }
 }
 console.log(solution("18446744073709551615", "287346502836570928366"))
+// console.log(solution("123456789", "987654321"))
 
 // console.log(solution("19999999999999999999999999999998", "1"))
 
