@@ -4,7 +4,6 @@ function solution(a, b) {
     while (number >= n) {
         if (number % n === 0) {
             if (n !== 2 && n !== 5) {
-                console.log(a, b, n);
                 return 2;
             }
             number /= n;
